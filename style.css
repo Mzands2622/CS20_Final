@@ -1,0 +1,336 @@
+/* General Section Styling */
+body,
+html {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  background: linear-gradient(to right, #ed7845,#f95ca4, #e2625b);
+}
+
+.section {
+    padding: 50px 20px;
+    box-sizing: border-box;
+    border-top: 3px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: box-shadow 0.3s ease;
+    height: 100vh;
+}
+
+
+/* Styling for header section */
+#header-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border: none;
+}
+
+.header-content h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ffcc00;
+}
+
+.header-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-bottom: 25px;
+    color: #d3d3d3;
+}
+
+.header-content button {
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    color: #1f1f1f;
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.header-content button:hover {
+    background-color: #e6b800;
+    transform: scale(1.05);
+}
+
+
+/* styling for navigation arrows */
+.nav-arrows {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.arrow {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background-color: #ffcc00;
+    color: #1f1f1f;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.arrow:hover {
+    transform: scale(1.1);
+}
+
+
+/* Side navigation dots */
+.side-dots {
+    position: fixed;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.side-dots span {
+    font-size: 2rem;
+    color: #d3d3d3;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.side-dots span:hover {
+    color: #ffcc00;
+}
+
+.side-dots .active {
+    color: #ffcc00;
+}
+
+/* Sign-Up Section Styling */
+#signup-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+#signup-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffcc00;
+}
+
+#signup-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    width: 700px;
+    gap: 15px;
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+#signup-form label {
+    font-size: 1rem;
+    color: #d3d3d3;
+    text-align: left;
+}
+
+#signup-form input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+#signup-form input:focus {
+    border-color: #ffcc00;
+    box-shadow: 0 0 5px #ffcc00;
+}
+
+#signup-form button {
+    padding: 12px;
+    font-size: 1rem;
+    color: white;
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s transform 0.3s;
+}
+
+#signup-form button:hover {
+    background-color: #e6b800;
+    transform: scale(1.05);
+}
+
+/* Genre Section Styling */
+#genre-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+#genre-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffcc00;
+}
+
+#genre-form label {
+    font-size: 1rem;
+    color: #d3d3d3;
+}
+
+#genre-form button {
+    padding: 12px;
+    font-size: 1rem;
+    color: white;
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+#genre-form button:hover {
+    background-color: #e6b800;
+}
+
+/* Genre Pill Styling */
+#genre-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 200px;
+    justify-content: center;
+    max-width: 600px;
+}
+
+.genre-pill {
+    padding: 12px 20px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #f0f0f0, #d3d3d3);
+    color: #333;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.genre-pill.selected {
+    background: linear-gradient(135deg, #ffcc00, #e6b800);
+    color: #1f1f1f;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.genre-pill:hover {
+    background: linear-gradient(135deg, #e6b800, #ffcc00);
+    color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+
+/* Playlist Styling */
+#playlist-section {
+    padding-top: 50px;
+    border-top: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+#playlist-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#playlist-section h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffcc00;
+}
+
+.track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.track:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.album-art {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+}
+
+.track-info h3 {
+    font-size: 1.2rem;
+    margin: 10px 0 5px;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+}
+
+.track-info p {
+    font-size: 1rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.track-info a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1db954;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.track-info a:hover {
+    color: #14943b;
+    text-decoration: underline;
+}
