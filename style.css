@@ -117,6 +117,37 @@ html {
     color: #ffcc00;
 }
 
+/* Our Story Section Styling */
+#story-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffcc00;
+}
+
+#story-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+
+/* Our Story Section Styling */
+#testimonials-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffcc00;
+}
+
+#testimonials-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
 /* Sign-Up Section Styling */
 #signup-section {
     display: flex;

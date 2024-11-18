@@ -1,5 +1,5 @@
 let current_section = 'header-section';
-let all_sections = ['header-section', 'signup-section', 'genre-section', 'playlist-section'];
+let all_sections = ['header-section', 'story-section', 'testimonials-section', 'signup-section', 'genre-section', 'playlist-section'];
 
 function scrollToSection(section_id) {
     let next_section = document.getElementById(section_id);
