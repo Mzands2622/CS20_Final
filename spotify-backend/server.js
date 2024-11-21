@@ -8,8 +8,8 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-const clientID = process.env.SPOTIFY_CLIENT_ID;
-const clientSECRET = process.env.SPOTIFY_CLIENT_SECRET;
+const clientID = "5c5ccfd064e04044b9126c80f95cd30c";
+const clientSECRET = "b3b84453bbc94604871471274b450873";
 
 const basicAuth = Buffer.from(`${clientID}:${clientSECRET}`).toString('base64');
 
