@@ -63,23 +63,22 @@
 }
 
 @media (max-width: 768px) {
+
     .genre-pill {
-        font-size: 0.8rem;
-        padding: 8px 12px;
         transition: none;
     }
 
-    #genre-pills {
-        gap: 8px;
-    }
-
-    /* Disable hover effects */
     .genre-pill:hover::before,
     .genre-pill:hover {
         transform: none;
         color: inherit;
     }
 
+    .genre-pill::before {
+        transition: none;
+    }
+
+    /* Keep selected state intact */
     .genre-pill.selected::before {
         transform: scaleX(1);
     }
