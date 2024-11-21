@@ -58,31 +58,25 @@ document.querySelectorAll('.arrow').forEach(next_arrow => {
 });
 
 // Spotify API Logic
+let all_pills = document.querySelectorAll('.genre-pill');
 let selectedGenres = [];
 
-let all_pills = document.querySelectorAll('.genre-pill');
 all_pills.forEach(function(next_pill) {
-    next_pill.addEventListener('click', function() {
+  next_pill.addEventListener('click', function() {
+    let next_genre = next_pill.getAttribute('data-value');
 
-        let next_genre = next_pill.getAttribute('data-value');
-
-        if (selectedGenres.indexOf(next_genre) != -1) {
-            let new_genres = [];
-            for (let i = 0; i < selectedGenres.length; i++) {
-                if (selectedGenres[i] != next_genre) {
-                    new_genres.push(selectedGenres[i]);
-                }
-            }
-
-            selectedGenres = new_genres;
-
-            next_pill.classList.remove('selected');
-        } else {
-            selectedGenres.push(next_genre);
-            next_pill.classList.add('selected');
-        }
-    });
+    if (selectedGenres.indexOf(next_genre) !== -1) {
+      // Genre is already selected; remove it
+      selectedGenres = selectedGenres.filter(genre => genre !== next_genre);
+      next_pill.classList.remove('selected');
+    } else {
+      // Add genre to selectedGenres
+      selectedGenres.push(next_genre);
+      next_pill.classList.add('selected');
+    }
+  });
 });
+
 
 let accessToken = null;
 let tokenExpirationTime = 0;
