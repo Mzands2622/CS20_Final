@@ -1,0 +1,38 @@
+/* Events Section */
+#events-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.event-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: var(--dark-gray);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.event-card h3 {
+  margin-bottom: 10px;
+}
+
+.event-card p {
+  color: var(--light-gray);
+  margin-bottom: 10px;
+}
+
+.event-card:hover {
+  transform: scale(1.05);
+}
+
+.event-card a:hover {
+  background-color: var(--hover-color);
+  transform: scale(1.05);
+}

@@ -1,0 +1,64 @@
+/* Playlist Section */
+#playlist-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--dark-gray);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.track:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.album-art {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 15px;
+}
+
+.album-art:hover {
+    cursor: pointer;
+}
+
+.track-info h3 {
+    font-size: 1.2rem;
+    margin: 10px 0 5px;
+    color: var(--text-color);
+    font-weight: bold;
+    text-align: center;
+}
+
+.track-info p {
+    font-size: 1rem;
+    color: var(--light-gray);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.track-info a {
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color var(--transition);
+}
+
+.track-info a:hover {
+    color: var(--hover-color);
+    text-decoration: none;
+}

@@ -156,7 +156,7 @@ function displayPlaylist(tracks) {
         trackElement.classList.add('track');
 
         trackElement.innerHTML = `
-        <img src="${track.album.images[0].url}" alt="Album Art" class="album-art">
+        <img src="${track.album.images[0] ? track.album.images[0].url : 'images/no-album-cover.png'}" alt="Album Art" class="album-art">
         <div class="track-info">
             <h3>${track.name}</h3>
             <p>${track.artists.map(artist => artist.name).join(', ')}</p>
@@ -202,10 +202,9 @@ function displayAllEvents(events) {
 
     if (events.length == 0) {
         eventsContainer.innerHTML = `
-        <div class="no-events-card">
-        <h2> No Upcoming Events </h2>
+        <div class="event-card">
+        <h3>No Upcoming Events</h3>
         <p>We're sorry, but there are no scheduled events for this artist at the moment. Please check back later!</p>
-        <img src="images/no-events-pic.jpg" alt="No Events Found" class="no-events-image">
         </div>
         `;
         return;

@@ -1,0 +1,74 @@
+/* Genre Section */
+#genre-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto 50px auto;
+    width: 90%;
+    max-width: 700px;
+    padding: 30px;
+}
+
+#genre-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    padding: 0 10px;
+}
+
+.genre-pill {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--dark-gray);
+    padding: 10px 15px;
+    border-radius: 30px;
+    border: solid 2px var(--border-color);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color var(--transition), color var(--transition),
+        box-shadow var(--transition), transform var(--transition);
+    z-index: 1;
+    text-align: center;
+}
+
+.genre-pill::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    background-color: var(--primary-color);
+    transition: transform 400ms ease-in-out;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.genre-pill:hover::before,
+.genre-pill.selected::before {
+    transform: scaleX(1);
+}
+
+.genre-pill:hover,
+.genre-pill.selected {
+    color: var(--white);
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .genre-pill {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+
+    #genre-pills {
+        gap: 8px;
+    }
+}
