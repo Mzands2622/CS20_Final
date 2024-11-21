@@ -61,29 +61,3 @@
     color: var(--white);
     transform: scale(1.05);
 }
-
-@media (max-width: 768px) {
-
-    .genre-pill {
-        transition: none;
-    }
-
-    .genre-pill:hover::before,
-    .genre-pill:hover {
-        transform: none;
-        color: inherit;
-    }
-
-    .genre-pill::before {
-        transition: none;
-    }
-
-    /* Keep selected state intact */
-    .genre-pill.selected::before {
-        transform: scaleX(1);
-    }
-
-    .genre-pill.selected {
-        color: var(--white);
-    }
-}
