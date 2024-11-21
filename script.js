@@ -1,6 +1,8 @@
+// Global variables
 let current_section = 'header-section';
-let all_sections = ['header-section', 'story-section', 'testimonials-section', 'signup-section', 'genre-section', 'playlist-section'];
+let all_sections = ['header-section', 'story-section', 'testimonials-section', 'signup-section', 'genre-section', 'playlist-section', 'events-section'];
 
+// Scrolling Logic
 function scrollToSection(section_id) {
     let next_section = document.getElementById(section_id);
     if (next_section) {
@@ -55,11 +57,7 @@ document.querySelectorAll('.arrow').forEach(next_arrow => {
     });
 });
 
-
-
-
-
-
+// Spotify API Logic
 let selectedGenres = [];
 
 let all_pills = document.querySelectorAll('.genre-pill');
@@ -90,7 +88,7 @@ let accessToken = null;
 let tokenExpirationTime = 0;
 
 async function fetchAccessToken() {
-    const response = await fetch(BACKEND_URL);
+    const response = await fetch("https://whispering-meadow-56072-ba39b0cc37be.herokuapp.com/token");
     const data = await response.json();
     accessToken = data.access_token;
     tokenExpirationTime = Date.now() + data.expires_in * 1000;
@@ -115,7 +113,9 @@ async function generatePlaylist() {
         let all_tracks = [];
 
         for (let next_genre of selectedGenres) {
-            let response = await fetch(`https://api.spotify.com/v1/search?q=genre:${next_genre}&type=track`, {
+
+            let random_off = Math.floor(Math.random() * 100);
+            let response = await fetch(`https://api.spotify.com/v1/search?q=genre:${next_genre}&type=track&offset=${random_off}`, {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`
                 }
@@ -172,3 +172,68 @@ function displayPlaylist(tracks) {
         container.appendChild(trackElement);
     })
 }
+
+// TicketMaster API Logic
+async function grabEvents(artist_name) {
+    try {
+        let fixed_artist = encodeURIComponent(artist_name);
+        console.log(fixed_artist);
+        const response = await fetch(
+            `https://whispering-meadow-56072-ba39b0cc37be.herokuapp.com/events?artist=${fixed_artist}`
+        );
+
+        if (!response.ok) {
+            displayAllEvents([]);
+            console.error("Error fetching events:", error);
+            return;
+        }
+    
+        const data = await response.json();
+
+        if (data._embedded && data._embedded.events) {
+            displayAllEvents(data._embedded.events);
+        } else {
+            displayAllEvents([]);
+        }
+
+    } catch (error) {
+        console.error("Error fetching events:", error);
+        displayAllEvents([]);
+    }
+}
+
+function displayAllEvents(events) {
+    let eventsContainer = document.getElementById('events-container');
+    eventsContainer.innerHTML = "";
+
+    if (events.length == 0) {
+        eventsContainer.innerHTML = "<p>No upcoming events found!</p>";
+        return;
+    }
+
+    events.forEach(event => {
+        let next_event = document.createElement("div");
+        next_event.classList.add("event-card");
+
+        next_event.innerHTML = `
+        <h3>${event.name}</h3>
+        <p><strong>Date:</strong> ${new Date(event.dates.start.localDate).toDateString()}</p>
+        <p><strong>Venue:</strong> ${event._embedded.venues[0].name}</p>
+        <a href="${event.url}" target=_blank>Buy Tickets</a>`;
+
+        eventsContainer.appendChild(next_event);
+    });
+}
+
+document.getElementById("playlist-container").addEventListener("click", (event) => {
+    let artist_card = event.target.closest(".track");
+    if (!artist_card) {
+        return;
+    }
+
+    let artist_name = artist_card.querySelector(".track-info p").textContent.split(",")[0].trim();
+    console.log(artist_name);
+
+    scrollToSection("events-section");
+    grabEvents(artist_name);
+})

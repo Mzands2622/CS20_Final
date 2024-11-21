@@ -8,10 +8,38 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-const clientID = "5c5ccfd064e04044b9126c80f95cd30c";
-const clientSECRET = "b3b84453bbc94604871471274b450873";
+const clientID = process.env.SPOTIFY_CLIENT_ID;
+const clientSECRET = process.env.SPOTIFY_CLIENT_SECRET;
 
 const basicAuth = Buffer.from(`${clientID}:${clientSECRET}`).toString('base64');
+
+app.get('/', (req, res) => {
+    res.send('Welcome to the Spotify Backend API!');
+})
+
+app.get('/events', async (req, res) => {
+    const artist_name = req.query.artist;
+    const ticketMasterAPIKey = process.env.TICKETMASTER_API_KEY;
+
+    try {
+        const response = await axios.get('https://app.ticketmaster.com/discovery/v2/events.json', {
+            params: {
+                apikey: ticketMasterAPIKey,
+                keyword: artist_name
+            }
+        });
+
+        if (response.data._embedded && response.data._embedded.events) {
+            res.json(response.data._embedded.events);
+        } else {
+            res.json([]);
+        }
+    } catch (error) {
+        res.status(500).json({error: "Failed to fetch events!"});
+    }
+});
+
+
 
 app.get('/token', async (req, res) => {
     try {

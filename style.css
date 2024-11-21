@@ -1,10 +1,14 @@
 /* General Section Styling */
-body,
-html {
+* {
   margin: 0px;
   padding: 0px;
-  width: 100%;
-  background: linear-gradient(to right, #ed7845,#f95ca4, #e2625b);
+  box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    overflow-x: hidden;
+    background: linear-gradient(to right, #ed7845,#f95ca4, #e2625b);
 }
 
 .section {
@@ -15,6 +19,8 @@ html {
     background-color: rgba(255, 255, 255, 0.1);
     transition: box-shadow 0.3s ease;
     height: 100vh;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 
@@ -83,10 +89,17 @@ html {
     color: #1f1f1f;
     cursor: pointer;
     transition: transform 0.2s;
+    z-index: 1000;
 }
 
 .arrow:hover {
     transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .nav-arrows {
+        display: none;
+    }
 }
 
 
@@ -210,6 +223,27 @@ html {
 #signup-form button:hover {
     background-color: #e6b800;
     transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    #signup-form {
+        width: 90%;
+        padding: 20px;
+        margin: 0 auto;
+    }
+
+    #signup-form input {
+        font-size: 0.9rem;
+    }
+
+    #signup-form button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    #signup-secition h2 {
+        font-size: 1.8rem;
+    }
 }
 
 /* Genre Section Styling */
@@ -364,4 +398,76 @@ html {
 .track-info a:hover {
     color: #14943b;
     text-decoration: underline;
+}
+
+/* Event Styling */
+
+#events-section {
+    padding-top: 50px;
+    border-top: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+#events-section h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffcc00;
+}
+
+#events-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.event-card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.event-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.event-card a {
+    margin-top: 15px;
+    display: inline-block;
+    padding: 10px 15px;
+    background: linear-gradient(to right, #1db954, #0ea648);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1rem;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    align-self: center;
+}
+
+.event-card a:hover {
+    background: linear-gradient(to right, #0ea648, #1db954);
+    transform: scale(1.1);
+}
+
+
+@media (max-width: 768px) {
+    #events-container {
+        grid-template-columns: 1fr;
+    }
 }
