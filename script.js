@@ -1,6 +1,6 @@
 // Global variables
 let current_section = 'header-section';
-let all_sections = ['header-section', 'story-section', 'testimonials-section', 'signup-section', 'genre-section', 'playlist-section', 'events-section'];
+let all_sections = ['header-section', 'signup-section', 'genre-section', 'playlist-section', 'events-section', 'story-section', 'testimonials-section'];
 
 // Scrolling Logic
 function scrollToSection(section_id) {
