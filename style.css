@@ -7,6 +7,7 @@
   --light-gray: #b3b3b3;
   --dark-gray: #282828;
   --hover-color: #1ed760;
+  --border-color: #1aa34a;
   --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   --transition: 0.2s ease-in-out;
 }
@@ -29,30 +30,54 @@ html {
 
 .section {
   padding: 50px 20px;
-  height: 100vh;
-  max-width: 100%;
-  display: block;
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   overflow-x: hidden;
   transition: box-shadow var(--transition);
+  flex-direction: column;
 }
 
 button {
+  position: relative;
+  overflow: hidden;
   padding: 12px 25px;
   font-size: 1.2rem;
   color: var(--text-color);
-  background-color: var(--primary-color);
-  border: none;
+  background-color: var(--dark-gray);
+  border: 2px solid var(--border-color);
   border-radius: 30px;
   cursor: pointer;
-  transition: transform var(--transition), background-color var(--transition);
+  transition: background-color var(--transition), color var(--transition),
+    box-shadow var(--transition), transform var(--transition);
+  z-index: 1;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  background-color: var(--primary-color);
+  transition: transform 400ms ease-in-out;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+button:hover::before {
+  transform: scaleX(1);
+  transition: transform var(--transition);
 }
 
 button:hover {
-  background-color: var(--hover-color);
-  transform: scale(1.02);
+  color: var(--white);
 }
 
 /* Header Section */
@@ -60,6 +85,7 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .header-content h1 {
@@ -84,26 +110,30 @@ button:hover {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  z-index: 1000;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
 }
 
 .arrow {
   font-size: 1.5rem;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none;
+  border: 2px solid var(--border-color);
   border-radius: 50%;
   background-color: var(--primary-color);
   color: var(--text-color);
   cursor: pointer;
-  transition: transform var(--transition);
+  box-shadow: var(--box-shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .arrow:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* Side Navigation Dots */
@@ -162,12 +192,14 @@ button:hover {
   box-shadow: 0 0 10px var(--primary-color);
 }
 
+#signup-form button {
+  margin-top: 20px;
+}
+
 /* Genre Section */
-/* ROB STOPPED HERE> NEED TO FIX REST */
 #genre-form {
   display: flex;
   flex-direction: column;
-  /* Align items vertically */
   justify-content: center;
   align-items: center;
 }
@@ -184,29 +216,52 @@ button:hover {
 }
 
 .genre-pill {
-  background-color: var(--primary-color);
+  position: relative;
+  overflow: hidden;
+  background-color: var(--dark-gray);
   padding: 12px 20px;
   border-radius: 30px;
+  border: solid 2px var(--border-color);
   font-size: 1rem;
-  font-weight: bold;
   cursor: pointer;
-  box-shadow: var(--box-shadow);
   transition: background-color var(--transition), color var(--transition),
-    box-shadow var(--transition);
+    box-shadow var(--transition), transform var(--transition);
+  z-index: 1;
 }
 
-.genre-pill.selected,
+.genre-pill::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  background-color: var(--primary-color);
+  transition: transform 400ms ease-in-out;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.genre-pill:hover::before {
+  transform: scaleX(1);
+  transition: transform var(--transition);
+}
+
 .genre-pill:hover {
-  background-color: var(--hover-color);
+  color: var(--white);
+}
+
+.genre-pill.selected {
+  background-color: var(--primary-color);
   color: var(--text-color);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
   transform: scale(1.05);
 }
 
 /* Playlist Section */
 #playlist-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
   width: 100%;
   max-width: 1000px;
@@ -218,7 +273,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #ffffff;
+  background-color: var(--dark-gray);
   padding: 15px;
   border-radius: 15px;
   box-shadow: var(--box-shadow);
@@ -237,17 +292,21 @@ button:hover {
   margin-bottom: 15px;
 }
 
+.album-art:hover {
+  cursor: pointer;
+}
+
 .track-info h3 {
   font-size: 1.2rem;
   margin: 10px 0 5px;
-  color: #333;
+  color: var(--text-color);
   font-weight: bold;
   text-align: center;
 }
 
 .track-info p {
   font-size: 1rem;
-  color: #555;
+  color: var(--light-gray);
   text-align: center;
   margin-bottom: 10px;
 }
@@ -260,8 +319,8 @@ button:hover {
 }
 
 .track-info a:hover {
-  color: #14943b;
-  text-decoration: underline;
+  color: var(--hover-color);
+  text-decoration: none;
 }
 
 /* Events Section */
@@ -269,7 +328,7 @@ button:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -280,26 +339,21 @@ button:hover {
   align-items: center;
   padding: 20px;
   border-radius: 20px;
-  background-color: #ffffff;
-  box-shadow: var(--box-shadow);
+  background-color: var(--dark-gray);
   transition: transform var(--transition), box-shadow var(--transition);
 }
 
-.event-card:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+.event-card h3 {
+    margin-bottom: 10px;
 }
 
-.event-card a {
-  margin-top: 15px;
-  padding: 10px 15px;
-  font-size: 1rem;
-  font-weight: bold;
-  border-radius: 10px;
-  text-decoration: none;
-  background-color: var(--primary-color);
-  color: var(--text-color);
-  transition: transform var(--transition), background-color var(--transition);
+.event-card p {
+  color: var(--light-gray);
+  margin-bottom: 10px;
+}
+
+.event-card:hover {
+  transform: scale(1.05);
 }
 
 .event-card a:hover {

@@ -223,9 +223,9 @@ function displayAllEvents(events) {
 
         next_event.innerHTML = `
         <h3>${event.name}</h3>
-        <p><strong>Date:</strong> ${new Date(event.dates.start.localDate).toDateString()}</p>
-        <p><strong>Venue:</strong> ${event._embedded.venues[0].name}</p>
-        <a href="${event.url}" target=_blank>Buy Tickets</a>`;
+        <p> ${new Date(event.dates.start.localDate).toDateString()}</p>
+        <p> ${event._embedded.venues[0].name}</p>
+        <button onclick="window.open('${event.url}', '_blank')">Buy Tickets</button>`;
 
         eventsContainer.appendChild(next_event);
     });
