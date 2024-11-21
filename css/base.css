@@ -159,3 +159,23 @@ button:hover {
 .side-dots .active {
     color: var(--hover-color);
 }
+
+@media (max-width: 768px) {
+
+    button,
+    .arrow {
+        transition: none;
+    }
+
+    button:hover::before,
+    button:hover {
+        transform: none;
+        color: inherit;
+        box-shadow: none;
+    }
+
+    .arrow:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
