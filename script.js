@@ -207,7 +207,13 @@ function displayAllEvents(events) {
     eventsContainer.innerHTML = "";
 
     if (events.length == 0) {
-        eventsContainer.innerHTML = "<p>No upcoming events found!</p>";
+        eventsContainer.innerHTML = `
+        <div class="no-events-card">
+        <h2> No Upcoming Events </h2>
+        <p>We're sorry, but there are no scheduled events for this artist at the moment. Please check back later!</p>
+        <img src="images/no-events-pic.jpg" alt="No Events Found" class="no-events-image">
+        </div>
+        `;
         return;
     }
 

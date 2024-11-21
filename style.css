@@ -471,3 +471,34 @@ body, html {
         grid-template-columns: 1fr;
     }
 }
+
+/* No events card */
+.no-events-card {
+    text-align: center;
+    background: linear-gradient(#ff9a9e, #fad0c4);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.no-events-card h2 {
+    color: #ff5a5f;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.no-events-card p {
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.no-events-image {
+    width: 300px;
+    height: auto;
+    margin-top: 15px;
+    border-radius: 10px;
+    opacity: 0.8;
+}
