@@ -1,6 +1,8 @@
 // Global variables
 let current_section = 'header-section';
 let all_sections = ['header-section', 'signup-section', 'genre-section', 'playlist-section', 'events-section', 'story-section', 'testimonials-section'];
+let selectedGenres = [];
+
 
 // Scrolling Logic
 function scrollToSection(section_id) {
@@ -58,26 +60,6 @@ document.querySelectorAll('.arrow').forEach(next_arrow => {
 });
 
 // Spotify API Logic
-let all_pills = document.querySelectorAll('.genre-pill');
-let selectedGenres = [];
-
-all_pills.forEach(function(next_pill) {
-  next_pill.addEventListener('click', function() {
-    let next_genre = next_pill.getAttribute('data-value');
-
-    if (selectedGenres.indexOf(next_genre) !== -1) {
-      // Genre is already selected; remove it
-      selectedGenres = selectedGenres.filter(genre => genre !== next_genre);
-      next_pill.classList.remove('selected');
-    } else {
-      // Add genre to selectedGenres
-      selectedGenres.push(next_genre);
-      next_pill.classList.add('selected');
-    }
-  });
-});
-
-
 let accessToken = null;
 let tokenExpirationTime = 0;
 
@@ -177,40 +159,75 @@ function displayPlaylist(tracks) {
     })
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    let all_pills = document.querySelectorAll("#genre-pills .genre-pill");
+document.addEventListener("DOMContentLoaded", async function() {
+    let all_genre_container = document.getElementById("genre-pills");
     let more_button = document.getElementById("show-more");
+    let all_pills = [];
 
+    async function load_genres() {
+        try {
+            let response = await fetch("genres.json");
+            let found_genres = await response.json();
+
+            found_genres.forEach(next_genre => {
+                let next_pill = document.createElement("span");
+                next_pill.classList.add("genre-pill");
+                next_pill.setAttribute("data-value", next_genre.toLowerCase().replace(/ /g, "_"));
+                next_pill.textContent = next_genre;
+
+                next_pill.addEventListener("click", () => toggle_genre(next_pill));
+                all_genre_container.appendChild(next_pill);
+            });
+
+            all_pills = document.querySelectorAll(".genre-pill");
+
+            update_vis_pills();
+        } catch (error) {
+            console.log("Unable to fetch genres!");
+        }
+    }
+
+    function toggle_genre(pill) {
+        let next_genre = pill.getAttribute("data-value");
+
+        if (selectedGenres.includes(next_genre)) {
+            selectedGenres = selectedGenres.filter(selected => selected != next_genre);
+            pill.classList.remove("selected");
+        } else {
+            selectedGenres.push(next_genre);
+            pill.classList.add("selected");
+        }
+    }
+    
     function update_vis_pills() {
         if (window.innerWidth < 768) {
-            Array.from(all_pills).slice(10).forEach(next_pill => {
-                next_pill.style.display = "none";
+            Array.from(all_pills).slice(10).forEach(pill => {
+                pill.style.display = "none";
             });
             more_button.style.display = "block";
             more_button.textContent = "Show More";
         } else {
-            all_pills.forEach(next_pill => {
-                next_pill.style.display = "inline-block";
-            });
+            all_pills.forEach(pill => (pill.style.display = "inline-block"));
             more_button.style.display = "none";
         }
     }
 
-    more_button.addEventListener("click", function (event) {
+    more_button.addEventListener("click", event => {
         event.preventDefault();
-        let pills_hidden = Array.from(all_pills).slice(10);
+        let hidden_pills = Array.from(all_pills).slice(10);
 
-        pills_hidden.forEach(next_pill => {
-            next_pill.style.display = next_pill.style.display == "none" ? "inline-block" : "none";
+        hidden_pills.forEach(pill => {
+            pill.style.display = pill.style.display == "none" ? "inline-block" : "none";
         });
 
-        this.textContent = this.textContent == "Show More" ? "Show Less": "Show More";
-    })
+        more_button.textContent = more_button.textContent == "Show More" ? "Show Less" : "Show More";
+    });
 
     window.addEventListener("resize", update_vis_pills);
 
-    update_vis_pills();
+    load_genres();
 });
+
 
 // TicketMaster API Logic
 async function grabEvents(artist_name) {
@@ -288,36 +305,3 @@ document.getElementById("playlist-container").addEventListener("click", (event) 
 })
 
 
-document.addEventListener("DOMContentLoaded", async function() {
-    let all_genre_container = document.getElementById("genre-pills");
-
-    try {
-        let response = await fetch("genres.json");
-        let found_genres = await response.json();
-
-        found_genres.forEach(next_genre => {
-            let next_pill = document.createElement("span");
-            next_pill.classList.add("genre-pill");
-            next_pill.setAttribute("data-value", next_genre.toLowerCase().replace(/ /g, "_"));
-            next_pill.textContent = next_genre;
-            all_genre_container.appendChild(next_pill);
-        });
-
-        let all_pills = document.querySelectorAll(".genre-pill");
-        all_pills.forEach(function(next_pill) {
-            next_pill.addEventListener('click', function() {
-                let next_genre = next_pill.getAttribute("data-value");
-
-                if (selectedGenres.indexOf(next_genre) != -1) {
-                    selectedGenres = selectedGenres.filter(genre => genre != next_genre);
-                    next_pill.classList.remove("selected");
-                } else {
-                    selectedGenres.push(next_genre);
-                    next_pill.classList.add("selected");
-                }
-            });
-        });
-    } catch (error) {
-        console.error("Genres unable to load!");
-    }
-})
