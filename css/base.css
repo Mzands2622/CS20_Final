@@ -24,7 +24,7 @@ html {
   font-family: "Circular Std", "Helvetica Neue", Arial, sans-serif;
   width: 100%;
   overflow-x: hidden;
-  background: var(--background-color);
+  background: linear-gradient(to right, #1db954, #282828);
   color: var(--text-color);
 }
 
@@ -43,10 +43,6 @@ html {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-#header-section {
-  border-top: none;
-}
-
 button {
   position: relative;
   overflow: hidden;
@@ -58,7 +54,7 @@ button {
   border-radius: 30px;
   cursor: pointer;
   transition: background-color var(--transition), color var(--transition),
-    box-shadow var(--transition), transform var(--transition);
+  box-shadow var(--transition), transform var(--transition);
   z-index: 1;
 }
 
@@ -91,6 +87,10 @@ button:hover {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background: linear-gradient(-45deg, #158f42, #107738, #191414, #282828);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+  border-top: none;
 }
 
 .header-content h1 {
@@ -105,6 +105,20 @@ button:hover {
   max-width: 600px;
   margin-bottom: 25px;
   color: var(--text-color);
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Navigation Arrows */
