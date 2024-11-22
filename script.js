@@ -286,3 +286,38 @@ document.getElementById("playlist-container").addEventListener("click", (event) 
     scrollToSection("events-section");
     grabEvents(artist_name);
 })
+
+
+document.addEventListener("DOMContentLoaded", async function() {
+    let all_genre_container = document.getElementById("genre-pills");
+
+    try {
+        let response = await fetch("genres.json");
+        let found_genres = await response.json();
+
+        found_genres.forEach(next_genre => {
+            let next_pill = document.createElement("span");
+            next_pill.classList.add("genre-pill");
+            next_pill.setAttribute("data-value", next_genre.toLowerCase().replace(/ /g, "_"));
+            next_pill.textContent = next_genre;
+            all_genre_container.appendChild(next_pill);
+        });
+
+        let all_pills = document.querySelectorAll(".genre-pill");
+        all_pills.forEach(function(next_pill) {
+            next_pill.addEventListener('click', function() {
+                let next_genre = next_pill.getAttribute("data-value");
+
+                if (selectedGenres.indexOf(next_genre) != -1) {
+                    selectedGenres = selectedGenres.filter(genre => genre != next_genre);
+                    next_pill.classList.remove("selected");
+                } else {
+                    selectedGenres.push(next_genre);
+                    next_pill.classList.add("selected");
+                }
+            });
+        });
+    } catch (error) {
+        console.error("Genres unable to load!");
+    }
+})
