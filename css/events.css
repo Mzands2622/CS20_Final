@@ -9,6 +9,14 @@
   padding: 20px;
 }
 
+#events-container.no-events {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
 .event-card {
   display: flex;
   flex-direction: column;
@@ -40,10 +48,6 @@
 
   /* No events card */
   .no-events-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     background: linear-gradient(135deg, #1e1e1e, #333);
     padding: 30px;

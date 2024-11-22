@@ -203,6 +203,7 @@ function displayAllEvents(events) {
     eventsContainer.innerHTML = "";
 
     if (events.length == 0) {
+        eventsContainer.classList.add('no-events');
         eventsContainer.innerHTML = `
         <div class="no-events-card">
         <h3>No Upcoming Events</h3>
