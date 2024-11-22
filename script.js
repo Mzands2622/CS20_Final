@@ -136,8 +136,16 @@ async function generatePlaylist() {
         }
       });
 
-      let final_tracks = unique.slice(0, 12);
+      function shuffleTracks(track_array) {
+        for (let i = track_array.length - 1; i > 0; i--) {
+            let rand_index = Math.floor(Math.random() * (i + 1));
+            [track_array[i], track_array[rand_index]] = [track_array[rand_index], track_array[i]];
+        }
+      }
 
+      shuffleTracks(unique)
+
+      let final_tracks = unique.slice(0, 12);
       displayPlaylist(final_tracks);
       scrollToSection('playlist-section');
     } catch (error) {
