@@ -214,6 +214,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     more_button.addEventListener("click", event => {
         event.preventDefault();
+        event.stopPropagation();
         let hidden_pills = Array.from(all_pills).slice(10);
 
         hidden_pills.forEach(pill => {
@@ -303,5 +304,3 @@ document.getElementById("playlist-container").addEventListener("click", (event) 
     scrollToSection("events-section");
     grabEvents(artist_name);
 })
-
-

@@ -100,11 +100,7 @@
 }
 
 @media (max-width: 768px) {
-    #show-more {
-        display: inline-block;
-    }
-
-    #genre-pills .genre-pill:nth-child(n+11) {
+    #genre-pills .hidden-pill{
         display: none;
     }
 }
