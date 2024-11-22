@@ -54,7 +54,7 @@
 }
 
 .genre-pill:hover {
-    background-color: var(--primary-color);
+    background-color: var(--dark-gray);
     color: var(--text-color);
     transform: scale(1.1);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
@@ -64,6 +64,13 @@
     background-color: var(--primary-color);
     color: var(--secondary-color);
     transform: scale(1.1);
+}
+
+.genre-pill.selected:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    transform: scale(1.1);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
 }
 
 #generate-playlist {

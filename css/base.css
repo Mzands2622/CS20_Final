@@ -24,7 +24,15 @@ html {
   font-family: "Circular Std", "Helvetica Neue", Arial, sans-serif;
   width: 100%;
   overflow-x: hidden;
-  background: linear-gradient(to right, #1db954, #282828);
+  background-color: var(--background-color);
+  background-image: radial-gradient(
+      circle at center,
+      #0f0f0f 0.15rem,
+      transparent 0
+    ),
+    radial-gradient(circle at center, #0f0f0f 0.15rem, transparent 0);
+  background-size: 1rem 1rem;
+  background-position: 0 0, 0.5rem 0.5rem;
   color: var(--text-color);
 }
 
@@ -35,6 +43,7 @@ html {
   margin: 0 auto;
   display: flex;
   align-items: center;
+  justify-content: center;
   text-align: center;
   overflow-x: hidden;
   transition: box-shadow 0.3s ease;
@@ -43,6 +52,7 @@ html {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Button Styles */
 button {
   position: relative;
   overflow: hidden;
@@ -54,7 +64,7 @@ button {
   border-radius: 30px;
   cursor: pointer;
   transition: background-color var(--transition), color var(--transition),
-  box-shadow var(--transition), transform var(--transition);
+    box-shadow var(--transition), transform var(--transition);
   z-index: 1;
 }
 
@@ -79,6 +89,14 @@ button:hover::before {
 
 button:hover {
   color: var(--white);
+}
+
+/* Link Styles */
+a {
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: color var(--transition);
 }
 
 /* Header Section */
@@ -133,7 +151,7 @@ button:hover {
 
   to {
     oapcity: 1;
-    transform: translateY(0)
+    transform: translateY(0);
   }
 }
 
