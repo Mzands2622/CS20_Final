@@ -177,6 +177,41 @@ function displayPlaylist(tracks) {
     })
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+    let all_pills = document.querySelectorAll("#genre-pills .genre-pill");
+    let more_button = document.getElementById("show-more");
+
+    function update_vis_pills() {
+        if (window.innerWidth < 768) {
+            Array.from(all_pills).slice(10).forEach(next_pill => {
+                next_pill.style.display = "none";
+            });
+            more_button.style.display = "block";
+            more_button.textContent = "Show More";
+        } else {
+            all_pills.forEach(next_pill => {
+                next_pill.style.display = "inline-block";
+            });
+            more_button.style.display = "none";
+        }
+    }
+
+    more_button.addEventListener("click", function (event) {
+        event.preventDefault();
+        let pills_hidden = Array.from(all_pills).slice(10);
+
+        pills_hidden.forEach(next_pill => {
+            next_pill.style.display = next_pill.style.display == "none" ? "inline-block" : "none";
+        });
+
+        this.textContent = this.textContent == "Show More" ? "Show Less": "Show More";
+    })
+
+    window.addEventListener("resize", update_vis_pills);
+
+    update_vis_pills();
+});
+
 // TicketMaster API Logic
 async function grabEvents(artist_name) {
     try {

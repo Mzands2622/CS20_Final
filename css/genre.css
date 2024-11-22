@@ -54,23 +54,16 @@
 }
 
 .genre-pill:hover {
-    background-color: var(--dark-gray);
+    background-color: var(--primary-color);
     color: var(--text-color);
-    transform: scale(1.05);
+    transform: scale(1.1);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
 }
 
 .genre-pill.selected {
     background-color: var(--primary-color);
     color: var(--secondary-color);
-    transform: scale(1.05);
-}
-
-.genre-pill.selected:hover {
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    transform: scale(1.05);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
 }
 
 #generate-playlist {
@@ -83,5 +76,35 @@
     border-radius: 50px;
     cursor: pointer;
     transition: transform var(--transition), box-shadow var(--transition);
+    margin-top: 35px;
 }
 
+#show-more {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: var(--text-color);
+    background-color: var(--dark-gray);
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    cursor: pointer;
+    display: none;
+    transition: transform var(--transition), box-shadow var(--transition);
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+#show-more:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    #show-more {
+        display: inline-block;
+    }
+
+    #genre-pills .genre-pill:nth-child(n+11) {
+        display: none;
+    }
+}

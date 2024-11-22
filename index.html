@@ -53,7 +53,6 @@
             <input type="password" id="confirm-password" name="confirm-password" required>
 
             <button type="submit" onclick="scrollToSection('genre-section')">Sign Up</button>
-            <p>Already have an account? <a href="#">Log in</a></p>
         </form>
         <div class="nav-arrows">
             <button class="arrow down">▼</button>
@@ -65,7 +64,6 @@
         <h2>Select Your Favorite Genres</h2>
         <form id="genre-form">
             <div id="genre-pills">
-                <!-- Throw this in a json file or in the db. This shouldn't be hard coded -->
                 <span class="genre-pill" data-value="classic_rock">Classic Rock</span>
                 <span class="genre-pill" data-value="pop">Pop</span>
                 <span class="genre-pill" data-value="jazz">Jazz</span>
@@ -84,6 +82,7 @@
                 <span class="genre-pill" data-value="reggae">Reggae</span>
                 <span class="genre-pill" data-value="country">Country</span>
                 <span class="genre-pill" data-value="pop_rock">Pop Rock</span>
+                
                 <span class="genre-pill" data-value="class_eurovision">Classic Eurovision</span>
                 <span class="genre-pill" data-value="italian_indie_pop">Italian Indie Pop</span>
                 <span class="genre-pill" data-value="yoik">Yoik</span>
@@ -93,6 +92,7 @@
                 <span class="genre-pill" data-value="country_blues">Country Blues</span>
                 <span class="genre-pill" data-value="french_folk">French Folk</span>
                 <span class="genre-pill" data-value="speedcore">Speedcore</span>
+
                 <span class="genre-pill" data-value="jazz_fusion">Jazz Fusion</span>
                 <span class="genre-pill" data-value="drone_folk">Drone Folk</span>
                 <span class="genre-pill" data-value="ethereal_gothic">Ethereal Gothic</span>
@@ -103,6 +103,7 @@
                 <span class="genre-pill" data-value="swedish_prog">Swedish Prog</span>
                 <span class="genre-pill" data-value="thai_pop">Thai Pop</span>
             </div>
+            <button id="show-more">Show More</button>
             <button type="button" id="generate-playlist" name="generate-playlist" onclick="generatePlaylist()">GENERATE
                 PLAYLIST</button>
         </form>
