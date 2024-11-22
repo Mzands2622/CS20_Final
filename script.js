@@ -204,7 +204,7 @@ function displayAllEvents(events) {
 
     if (events.length == 0) {
         eventsContainer.innerHTML = `
-        <div class="event-card">
+        <div class="no-events-card">
         <h3>No Upcoming Events</h3>
         <p>We're sorry, but there are no scheduled events for this artist at the moment. Please check back later!</p>
         </div>
