@@ -13,9 +13,8 @@
 #genre-pills {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    gap: 15px;
+    margin-bottom: 18px;
     justify-content: center;
     align-items: center;
     max-width: 100%;
@@ -26,15 +25,18 @@
     position: relative;
     overflow: hidden;
     background-color: var(--dark-gray);
-    padding: 10px 15px;
+    padding: 12px 20px;
     border-radius: 30px;
     border: solid 2px var(--border-color);
-    font-size: 0.9rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: capitalize;
     cursor: pointer;
-    transition: background-color var(--transition), color var(--transition),
-        box-shadow var(--transition), transform var(--transition);
+    transition: background-color var(--transition), color var(--transition);
+    box-shadow: var(--transition), transform var(--transition);
     z-index: 1;
     text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .genre-pill::before {
@@ -51,13 +53,28 @@
     transform-origin: left;
 }
 
-.genre-pill:hover::before,
-.genre-pill.selected::before {
-    transform: scaleX(1);
+.genre-pill:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    transform: scale(1.1);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
 }
 
-.genre-pill:hover,
 .genre-pill.selected {
-    color: var(--white);
-    transform: scale(1.05);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    transform: scale(1.1);
 }
+
+#generate-playlist {
+    padding: 15px 36px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-color);
+    background-color: var(--dark-gray);
+    border: 3px solid var(--primary-color);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
