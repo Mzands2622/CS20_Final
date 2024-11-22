@@ -136,7 +136,9 @@ async function generatePlaylist() {
         }
       });
 
-      displayPlaylist(unique);
+      let final_tracks = unique.slice(0, 12);
+
+      displayPlaylist(final_tracks);
       scrollToSection('playlist-section');
     } catch (error) {
         console.error("Error fetch playlist:", error);
