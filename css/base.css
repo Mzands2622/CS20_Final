@@ -94,17 +94,21 @@ button:hover {
 }
 
 .header-content h1 {
-  font-size: 3.5rem;
-  font-weight: bold;
-  margin-bottom: 15px;
+  font-size: 4.5rem;
+  font-weight: 900;
   color: var(--primary-color);
+  text-transform: 20px;
+  text-shadow: 0px 4-x 10px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 2s ease;
 }
 
 .header-content p {
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin-bottom: 25px;
+  font-size: 1.5rem;
+  max-width: 800px;
+  margin-bottom: 30px;
   color: var(--text-color);
+  line-height: 1.8;
+  animation: fadeIn 2.5s ease;
 }
 
 @keyframes gradientAnimation {
@@ -118,6 +122,18 @@ button:hover {
 
   100% {
     background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    oapcity: 1;
+    transform: translateY(0)
   }
 }
 
