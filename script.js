@@ -213,6 +213,8 @@ function displayAllEvents(events) {
         return;
     }
 
+    eventsContainer.classList.remove('no-events');
+
     events.forEach(event => {
         let next_event = document.createElement("div");
         next_event.classList.add("event-card");
