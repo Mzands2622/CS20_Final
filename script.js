@@ -225,9 +225,11 @@ function displayAllEvents(events) {
 
     events.forEach(event => {
         let next_event = document.createElement("div");
+        let next_image = event.images?.[0]?.url;
         next_event.classList.add("event-card");
 
         next_event.innerHTML = `
+        <img src="${next_image}" alt="${event.name}" class="event-image">
         <h3>${event.name}</h3>
         <p> ${new Date(event.dates.start.localDate).toDateString()}</p>
         <p> ${event._embedded.venues[0].name}</p>

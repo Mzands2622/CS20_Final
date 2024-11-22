@@ -45,6 +45,14 @@
   transform: scale(1.05);
 }
 
+.event-card img.event-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+
 
   /* No events card */
   .no-events-card {
