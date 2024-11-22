@@ -30,16 +30,21 @@ html {
 
 .section {
   padding: 50px 20px;
-  max-width: 1200px;
+  max-width: 100%;
   min-height: 100vh;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
   align-items: center;
   text-align: center;
   overflow-x: hidden;
-  transition: box-shadow var(--transition);
+  transition: box-shadow 0.3s ease;
   flex-direction: column;
+  border-top: 2px solid rgba(180, 180, 180, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#header-section {
+  border-top: none;
 }
 
 button {
