@@ -100,7 +100,9 @@
 }
 
 @media (max-width: 768px) {
-    #genre-pills .hidden-pill{
-        display: none;
+    #genre-pills {
+        gap: 15px;
+        justify-content: center;
     }
+
 }

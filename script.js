@@ -60,26 +60,6 @@ document.querySelectorAll('.arrow').forEach(next_arrow => {
 });
 
 // Spotify API Logic
-
-let all_pills = document.querySelectorAll('.genre-pill');
-
-all_pills.forEach(function(next_pill) {
-  next_pill.addEventListener('click', function() {
-    let next_genre = next_pill.getAttribute('data-value');
-
-    if (selectedGenres.indexOf(next_genre) !== -1) {
-      // Genre is already selected; remove it
-      selectedGenres = selectedGenres.filter(genre => genre !== next_genre);
-      next_pill.classList.remove('selected');
-    } else {
-      // Add genre to selectedGenres
-      selectedGenres.push(next_genre);
-      next_pill.classList.add('selected');
-    }
-  });
-});
-
-
 let accessToken = null;
 let tokenExpirationTime = 0;
 
@@ -220,10 +200,10 @@ document.addEventListener("DOMContentLoaded", async function() {
     }
     
     function update_vis_pills() {
+        let hidden_pills = Array.from(all_pills).slice(10);
+
         if (window.innerWidth < 768) {
-            Array.from(all_pills).slice(10).forEach(pill => {
-                pill.style.display = "none";
-            });
+            hidden_pills.forEach(pill => (pill.style.display = "none"));
             more_button.style.display = "block";
             more_button.textContent = "Show More";
         } else {
@@ -232,21 +212,22 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
     }
 
-    more_button.addEventListener("click", event => {
-        event.preventDefault();
-        event.stopPropagation();
+    more_button.addEventListener("click", () => {
         let hidden_pills = Array.from(all_pills).slice(10);
+        let is_hidden = hidden_pills.every(pill => pill.style.display == "none");
 
-        hidden_pills.forEach(pill => {
-            pill.style.display = pill.style.display == "none" ? "inline-block" : "none";
-        });
-
-        more_button.textContent = more_button.textContent == "Show More" ? "Show Less" : "Show More";
+        if (is_hidden) {
+            hidden_pills.forEach(pill => (pill.style.display = "inline-block"));
+            more_button.textContent = "Show Less";
+        } else {
+            hidden_pills.forEach(pill => (pill.style.display = "none"));
+            more_button.textContent = "Show More";
+        }
     });
 
     window.addEventListener("resize", update_vis_pills);
 
-    load_genres();
+    load_genres().then(update_vis_pills);
 });
 
 
