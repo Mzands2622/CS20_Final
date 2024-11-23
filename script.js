@@ -159,6 +159,8 @@ function displayPlaylist(tracks) {
     })
 }
 
+let isMobileExpanded = false;
+
 document.addEventListener("DOMContentLoaded", async function() {
     let all_genre_container = document.getElementById("genre-pills");
     let more_button = document.getElementById("show-more");
@@ -180,7 +182,6 @@ document.addEventListener("DOMContentLoaded", async function() {
             });
 
             all_pills = document.querySelectorAll(".genre-pill");
-
             update_vis_pills();
         } catch (error) {
             console.log("Unable to fetch genres!");
@@ -200,36 +201,32 @@ document.addEventListener("DOMContentLoaded", async function() {
     }
     
     function update_vis_pills() {
-        let hidden_pills = Array.from(all_pills).slice(10);
-
         if (window.innerWidth < 768) {
-            hidden_pills.forEach(pill => (pill.style.display = "none"));
+            let hidden_pills = Array.from(all_pills).slice(10);
+            
+            hidden_pills.forEach(pill => {
+                pill.style.display = isMobileExpanded ? "inline-block" : "none";
+            });
+            
             more_button.style.display = "block";
-            more_button.textContent = "Show More";
+            more_button.textContent = isMobileExpanded ? "Show Less" : "Show More";
         } else {
-            all_pills.forEach(pill => (pill.style.display = "inline-block"));
+            all_pills.forEach(pill => pill.style.display = "inline-block");
             more_button.style.display = "none";
+            isMobileExpanded = false;
         }
     }
 
     more_button.addEventListener("click", () => {
-        let hidden_pills = Array.from(all_pills).slice(10);
-        let is_hidden = hidden_pills.every(pill => pill.style.display == "none");
-
-        if (is_hidden) {
-            hidden_pills.forEach(pill => (pill.style.display = "inline-block"));
-            more_button.textContent = "Show Less";
-        } else {
-            hidden_pills.forEach(pill => (pill.style.display = "none"));
-            more_button.textContent = "Show More";
-        }
+        isMobileExpanded = !isMobileExpanded;
+        update_vis_pills();
     });
 
     window.addEventListener("resize", update_vis_pills);
 
-    load_genres().then(update_vis_pills);
+    load_genres();
 });
-
+    
 
 // TicketMaster API Logic
 async function grabEvents(artist_name) {
