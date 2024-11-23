@@ -159,9 +159,9 @@ function displayPlaylist(tracks) {
     })
 }
 
-let isMobileExpanded = false;
 
 document.addEventListener("DOMContentLoaded", async function() {
+    let is_mobile = false;
     let all_genre_container = document.getElementById("genre-pills");
     let more_button = document.getElementById("show-more");
     let all_pills = [];
@@ -187,7 +187,6 @@ document.addEventListener("DOMContentLoaded", async function() {
             console.log("Unable to fetch genres!");
         }
     }
-
     function toggle_genre(pill) {
         let next_genre = pill.getAttribute("data-value");
 
@@ -199,34 +198,31 @@ document.addEventListener("DOMContentLoaded", async function() {
             pill.classList.add("selected");
         }
     }
-    
+
     function update_vis_pills() {
         if (window.innerWidth < 768) {
             let hidden_pills = Array.from(all_pills).slice(10);
-            
             hidden_pills.forEach(pill => {
-                pill.style.display = isMobileExpanded ? "inline-block" : "none";
+                pill.style.display = is_mobile ? "inline-block" : "none";
             });
-            
+
             more_button.style.display = "block";
-            more_button.textContent = isMobileExpanded ? "Show Less" : "Show More";
+            more_button.textContent = is_mobile ? "Show Less" : "Show More";
         } else {
             all_pills.forEach(pill => pill.style.display = "inline-block");
             more_button.style.display = "none";
-            isMobileExpanded = false;
+            is_mobile = false;
         }
     }
 
     more_button.addEventListener("click", () => {
-        isMobileExpanded = !isMobileExpanded;
+        is_mobile = !is_mobile;
         update_vis_pills();
     });
 
     window.addEventListener("resize", update_vis_pills);
-
     load_genres();
 });
-    
 
 // TicketMaster API Logic
 async function grabEvents(artist_name) {
