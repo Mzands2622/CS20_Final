@@ -79,12 +79,14 @@ async function getAccessToken() {
 
 
 async function generatePlaylist() {
+    let header = document.getElementById('genre-select-header');
     if (selectedGenres.length === 0) {
-        alert("Please select at least one genre.");
-        return;
+            header.innerHTML = "Please select at least one genre!";
+            return;
     }
 
     try {
+        header.innerHTML = "Select Your Favorite Genres";
         let accessToken = await getAccessToken();
         let all_tracks = [];
 
@@ -275,12 +277,25 @@ function displayAllEvents(events) {
         let next_image = event.images?.[0]?.url;
         next_event.classList.add("event-card");
 
+        let found_url = null;
+
+        if (event.url && !event.url.includes("undefined")) {
+            found_url = event.url;
+        }
+
+        let button_text = "";
+        if (found_url) {
+            button_text = `<button onclick="window.open('${found_url}', '_blank')">Buy Tickets</button>`;
+        } else {
+            button_text = `<button disabled style="cursor: not-allowed; opacity: 0.6;">Tickets Not Available</button>`;
+        }
+
         next_event.innerHTML = `
         <img src="${next_image}" alt="${event.name}" class="event-image">
         <h3>${event.name}</h3>
         <p> ${new Date(event.dates.start.localDate).toDateString()}</p>
         <p> ${event._embedded.venues[0].name}</p>
-        <button onclick="window.open('${event.url}', '_blank')">Buy Tickets</button>`;
+        ${button_text}`;
 
         eventsContainer.appendChild(next_event);
     });
