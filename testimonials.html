@@ -1,113 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>User Testimonials</title>
-        <link rel="stylesheet" href="css/base.css">
-        <style>
-            body {
-                background-color: var(--background-color);
-                color: var(--text-color);
-                background-image: radial-gradient(
-                    circle at center,
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Testimonials</title>
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            background-image: radial-gradient(circle at center,
                     #0f0f0f 0.15rem,
-                    transparent 0
-                ),
+                    transparent 0),
                 radial-gradient(circle at center, #0f0f0f 0.15rem, transparent 0);
-                background-size: 1rem 1rem;
-                background-position: 0 0, 0.5rem 0.5rem;
-            }
-            .testimonial-section {
-                color: var(--text-color);
-                padding: 60px 20px;
-                text-align: center;
-            }
-            .testimonial-section h2 {
-                font-size: 2.0rem;
-                color: var(--secondary-color);
-                margin-bottom: 60px;
-            }
-            .testimonial-container {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 20px;
-                max-width: 1200px;
-                margin: 0 auto;
-            }
-            .testimonial-card {
-                background-color: var(--dark-gray);
-                border: 2px solid var(--border-color);
-                border-radius: 10px;
-                box-shadow: var(--box-shadow);
-                padding: 20px;
-                width: 300px;
-                text-align: left;
-                transition: transform var(--transition), box-shadow var(--transition);
-            }
-            .testimonial-card:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            }
-            .testimonial-card h3 {
-                font-size: 1.2rem;
-                color: var(--text-color);
-                margin-bottom: 10px;
-            }
-            .testimonial-card p {
-                font-size: 1rem;
-                color: var(--light-gray);
-                line-height: 1.6;
-            }
-            .testimonial-card span {
-                display: block;
-                font-size: 0.9rem;
-                color: var(--primary-color);
-                margin-top: 15px;
-            }
-        </style>
-    </head>
-    <body>
-        <section class="testimonial-section">
-            <h2>What Our Users Are Saying</h2>
-            <div class="testimonial-container">
-                <div class="testimonial-card">
-                    <h3>Alex Johnson</h3>
-                    <p>"This app has completely changed the way to discover music and events. I love how it brings everything I need into one place!"</p>
-                    <span>- Record Producer</span>
-                </div>
+            background-size: 1rem 1rem;
+            background-position: 0 0, 0.5rem 0.5rem;
+        }
 
-                <div class="testimonial-card">
-                    <h3>Jessica Lee</h3>
-                    <p>"Thanks to this app, I never miss out on concerts by my favorite artists anymore. The integration with ticket purchasing is seamless."</p>
-                    <span>- Frequent Concert Goer</span>
-                </div>
+        .testimonial-section {
+            color: var(--text-color);
+            padding: 60px 20px;
+            text-align: center;
+        }
 
-                <div class="testimonial-card">
-                    <h3>Mark Davis</h3>
-                    <p>"Creating playlists and finding live shows has never been easier. I can finally plan my weekends around great music!"</p>
-                    <span>- Event Planner</span>
-                </div>
+        .testimonial-section h2 {
+            font-size: 2.0rem;
+            color: var(--secondary-color);
+            margin-bottom: 60px;
+        }
 
-                <div class="testimonial-card">
-                    <h3>Sophia Brown</h3>
-                    <p>"I love discovering new artists and then finding out they have events nearby. It's like having a personal music assistant."</p>
-                    <span>- New Artist Explorer</span>
-                </div>
+        .testimonial-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-                <div class="testimonial-card">
-                    <h3>Emily Carter</h3>
-                    <p>"This app feels like it was made for me. I can't believe how easy it is to find new music and track upcoming events!"</p>
-                    <span>- Country Music Superfan</span>
-                </div>
+        .testimonial-card {
+            background-color: var(--dark-gray);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            width: 300px;
+            text-align: left;
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
 
-                <div class="testimonial-card">
-                    <h3>Michael Green</h3>
-                    <p>"From playlists to live shows, this app has everything I need. It's my go-to platform for discovering and enjoying music."</p>
-                    <span>- Pop Music Songwriter</span>
-                </div>
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .testimonial-card h3 {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .testimonial-card p {
+            font-size: 1rem;
+            color: var(--light-gray);
+            line-height: 1.6;
+        }
+
+        .testimonial-card span {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="testimonial-section">
+        <h2>What Our Users Are Saying</h2>
+        <div class="testimonial-container">
+            <div class="testimonial-card">
+                <h3>Alex Johnson</h3>
+                <p>"This app has completely changed the way to discover music and events. I love how it brings
+                    everything I need into one place!"</p>
+                <span>- Record Producer</span>
             </div>
-        </section>
-    </body>
+
+            <div class="testimonial-card">
+                <h3>Jessica Lee</h3>
+                <p>"Thanks to this app, I never miss out on concerts by my favorite artists anymore. The integration
+                    with ticket purchasing is seamless."</p>
+                <span>- Frequent Concert Goer</span>
+            </div>
+
+            <div class="testimonial-card">
+                <h3>Mark Davis</h3>
+                <p>"Creating playlists and finding live shows has never been easier. I can finally plan my weekends
+                    around great music!"</p>
+                <span>- Event Planner</span>
+            </div>
+
+            <div class="testimonial-card">
+                <h3>Sophia Brown</h3>
+                <p>"I love discovering new artists and then finding out they have events nearby. It's like having a
+                    personal music assistant."</p>
+                <span>- New Artist Explorer</span>
+            </div>
+
+            <div class="testimonial-card">
+                <h3>Emily Carter</h3>
+                <p>"This app feels like it was made for me. I can't believe how easy it is to find new music and track
+                    upcoming events!"</p>
+                <span>- Country Music Superfan</span>
+            </div>
+
+            <div class="testimonial-card">
+                <h3>Michael Green</h3>
+                <p>"From playlists to live shows, this app has everything I need. It's my go-to platform for discovering
+                    and enjoying music."</p>
+                <span>- Pop Music Songwriter</span>
+            </div>
+        </div>
+    </section>
+</body>
+
 </html>
